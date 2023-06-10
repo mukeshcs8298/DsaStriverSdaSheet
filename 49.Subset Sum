@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+void solve(int ind, vector < int > & num, int n, vector < int > & ans, int sum)
+{
+     if (ind == n) {
+        ans.push_back(sum);
+        return;
+      }
+      //element is picked
+      solve(ind + 1, num, n, ans, sum + num[ind]);
+      //element is not picked
+      solve(ind + 1, num, n, ans, sum);
+    
+}
+vector<int> subsetSum(vector<int> &num)
+{
+    int n=num.size();
+    // Write your code here.
+    vector < int > ans;
+   solve(0, num, n, ans, 0);
+    sort(ans.begin(), ans.end());
+    return ans;
+}
